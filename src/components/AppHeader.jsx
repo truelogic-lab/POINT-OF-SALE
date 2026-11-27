@@ -1,69 +1,78 @@
-import React from 'react';
-import {
-  Home,
-  LayoutDashboard,
-  User,
-  Settings,
-  MessageSquare,
-  Bell,
-  ChevronDown,
-} from 'lucide-react';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
 import './AppHeader.css';
 
 const navItems = [
-  { label: 'Home', icon: Home, active: true },
-  { label: 'Dashboard', icon: LayoutDashboard, active: false },
-  { label: 'Profile', icon: User, active: false },
-  { label: 'Settings', icon: Settings, active: false },
+  { label: 'Home', path: '/' },
+  { label: 'Features', path: '/features' },
+  { label: 'Pricing', path: '/pricing' },
+  { label: 'Hardware', path: '/hardware' },
+  { label: 'Integrations', path: '/integrations' },
+  { label: 'About', path: '/about' },
 ];
 
 export default function AppHeader() {
+  const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <header className="app-header">
-      {/* Left: Logo and Brand */}
-      <div className="header-brand">
-        <img 
-          src="/images/logo.jpg" 
-          alt="Botanico Logo" 
-          className="header-logo-img" 
+      <Link to="/" className="header-brand" onClick={closeMenu}>
+        <img
+          src="/images/logo.jpg"
+          alt="Botanico Logo"
+          className="header-logo-img"
           draggable="false"
-          onContextMenu={(e) => e.preventDefault()}
         />
         <span className="header-brand-name">Botanico</span>
-      </div>
+      </Link>
 
-      {/* Center: Navigation */}
-      <nav className="header-nav">
+      <nav
+        className={`header-nav${menuOpen ? ' menu-open' : ''}`}
+        aria-label="Main navigation"
+      >
         {navItems.map((item) => {
-          const Icon = item.icon;
+          const active = location.pathname === item.path;
+
           return (
-            <a
-              key={item.label}
-              href="#"
-              className={`header-nav-item${item.active ? ' active' : ''}`}
+            <Link
+              key={item.path}
+              to={item.path}
+              className={`header-nav-item${active ? ' active' : ''}`}
+              aria-current={active ? 'page' : undefined}
+              onClick={closeMenu}
             >
-              <Icon size={16} />
               {item.label}
-            </a>
+            </Link>
           );
         })}
+
+        <Link
+          to="/contact"
+          className="header-mobile-contact"
+          onClick={closeMenu}
+        >
+          Contact Us
+        </Link>
       </nav>
 
-      {/* Right: Actions */}
       <div className="header-actions">
-        <button type="button" className="header-icon-button" aria-label="Messages">
-          <MessageSquare size={20} />
-        </button>
-        <button type="button" className="header-icon-button" aria-label="Notifications">
-          <Bell size={20} />
-          <span className="header-notification-dot" />
-        </button>
+        <Link to="/contact" className="header-contact-button">
+          Contact Us
+        </Link>
 
-        <div className="header-divider" />
-
-        <button type="button" className="header-dropdown">
-          Sales
-          <ChevronDown size={14} className="header-dropdown-chevron" />
+        <button
+          type="button"
+          className="header-menu-button"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={menuOpen}
+          aria-controls="header-navigation"
+        >
+          {menuOpen ? <X size={25} /> : <Menu size={25} />}
         </button>
       </div>
     </header>

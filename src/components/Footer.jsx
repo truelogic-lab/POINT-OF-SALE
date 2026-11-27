@@ -56,7 +56,6 @@ export default function Footer() {
               <Link to="/about">About Us</Link>
               <Link to="/careers">Careers</Link>
               <Link to="/contact">Contact</Link>
-              <Link to="/blog">Blog</Link>
             </div>
             <div className="footer-column">
               <h4>Support</h4>

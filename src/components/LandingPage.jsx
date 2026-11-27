@@ -170,7 +170,7 @@ export default function LandingPage() {
       <section className="section section-alt">
         <div className="features-header">
           <h2>Features that meet all your needs.</h2>
-          <a href="#">View all features &rarr;</a>
+          <a href="/features">View all features &rarr;</a>
         </div>
 
         <div className="features-grid">

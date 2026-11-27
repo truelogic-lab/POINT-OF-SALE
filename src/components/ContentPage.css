@@ -195,3 +195,42 @@
 .back-home-btn:hover {
   color: #06B6D4;
 }
+
+/* Pricing plan features */
+.pricing-features {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.pricing-features h4 {
+  margin: 0 0 18px;
+  color: #111827;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.pricing-features ul {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pricing-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #4b5563;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.pricing-check {
+  flex-shrink: 0;
+  color: #0891b2;
+  font-weight: 800;
+}
