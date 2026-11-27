@@ -15,18 +15,18 @@ export default function ContactPage() {
           <div className="content-section">
             <h2>Support</h2>
             <p>Email: support@botanico.com</p>
-            <p>Phone: +1 (555) 123-4567</p>
-            <p>Hours: Mon-Fri, 8am - 6pm</p>
+            <p>Phone: +254 136 726 609</p>
+            <p>Hours: Mon-Sun, 8am - 6pm</p>
           </div>
         </div>
         <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
           <div className="form-group">
             <label>Full Name</label>
-            <input type="text" placeholder="John Doe" required />
+            <input type="text" placeholder="warren musungu" required />
           </div>
           <div className="form-group">
             <label>Email Address</label>
-            <input type="email" placeholder="john@example.com" required />
+            <input type="email" placeholder="warrenmusungu3@gmail.com" required />
           </div>
           <div className="form-group">
             <label>Message</label>
