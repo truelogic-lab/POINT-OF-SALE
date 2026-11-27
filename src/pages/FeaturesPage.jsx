@@ -1,67 +1,82 @@
 import React from 'react';
+import {
+  ShoppingCart,
+  Package,
+  TrendingUp,
+  Users,
+  CreditCard,
+  ShieldCheck,
+  Store,
+  Globe,
+  Monitor,
+  Truck,
+  ClipboardList,
+  BarChart3
+} from 'lucide-react';
+
 import BackButton from '../components/BackButton';
 import './FeaturesPage.css';
 
 const features = [
   {
+    icon: ShoppingCart,
     title: 'Point of Sale',
-    description: 'Process customer transactions through a simple checkout experience designed for everyday business operations.',
-    items: ['Quick product search', 'Barcode scanning support', 'Multiple payment methods']
+    description: 'Handle customer purchases quickly, record payments and keep track of every sale in one place.'
   },
   {
+    icon: Package,
     title: 'Inventory Management',
-    description: 'Keep track of products, stock quantities and inventory movement across your business.',
-    items: ['Real-time stock tracking', 'Low-stock monitoring', 'Stock movement records']
+    description: 'Know what products you have in stock, what is running low and what needs restocking.'
   },
   {
+    icon: TrendingUp,
     title: 'Sales Management',
-    description: 'Monitor business sales and understand how your products and branches are performing.',
-    items: ['Sales tracking', 'Transaction history', 'Sales summaries']
+    description: 'Keep an eye on your sales, check past transactions and see how your business is performing.'
   },
   {
+    icon: Users,
     title: 'Customer Management',
-    description: 'Organise customer information and maintain a clear history of customer transactions.',
-    items: ['Customer records', 'Purchase history', 'Customer information']
+    description: 'Save customer details and easily check their previous purchases whenever you need to.'
   },
   {
+    icon: CreditCard,
     title: 'Payment Management',
-    description: 'Manage payment records and keep track of the different ways customers pay.',
-    items: ['Cash payments', 'Card payments', 'Mobile money records']
+    description: 'Keep track of payments received from customers and see how each transaction was paid.'
   },
   {
+    icon: ShieldCheck,
     title: 'Role and Access Control',
-    description: 'Organise staff access and manage which parts of the system different users can access.',
-    items: ['User accounts', 'Role-based permissions', 'Access management']
+    description: 'Control who can access your system by giving staff the permissions they need to do their work.'
   },
   {
+    icon: Store,
     title: 'Multi-Store Management',
-    description: 'Manage business operations across multiple branches from one central platform.',
-    items: ['Multiple branches', 'Branch-level operations', 'Centralised oversight']
+    description: 'Manage different branches from one place and keep track of what is happening at each location.'
   },
   {
+    icon: Globe,
     title: 'Online and Offline Sales',
-    description: 'Bring your in-store and online sales operations together for easier business monitoring.',
-    items: ['In-store transactions', 'Online sales monitoring', 'Unified sales overview']
+    description: 'Keep track of sales made in your physical store and through your online channels.'
   },
   {
+    icon: Monitor,
     title: 'Access Across Devices',
-    description: 'Use a responsive interface designed to work across desktop, tablet and mobile screens.',
-    items: ['Desktop access', 'Tablet support', 'Mobile-friendly interface']
+    description: 'Access Botanico from your computer, tablet or phone wherever you need to manage your business.'
   },
   {
+    icon: Truck,
     title: 'Supplier Management',
-    description: 'Keep supplier information organised to support your purchasing and stock operations.',
-    items: ['Supplier records', 'Supplier information', 'Purchase organisation']
+    description: 'Keep supplier details organised and make it easier to manage the people who provide your stock.'
   },
   {
+    icon: ClipboardList,
     title: 'Business Records',
-    description: 'Keep important operational records organised and easier to review.',
-    items: ['Transaction records', 'Product records', 'Operational history']
+    description: 'Keep your business information and transaction history organised so you can find records when needed.'
   },
   {
+    icon: BarChart3,
     title: 'Reports and Insights',
-    description: 'Review business activity through organised reports that help you understand performance.',
-    items: ['Daily sales summaries', 'Financial reports', 'Business performance']
+    description: 'Check your sales and business reports to understand how your business is doing.'
   }
 ];
 
@@ -97,24 +112,22 @@ export default function FeaturesPage() {
         </div>
 
         <div className="features-list">
-          {features.map((feature, index) => (
-            <article className="feature-item" key={feature.title}>
-              <span className="feature-number">
-                {String(index + 1).padStart(2, '0')}
-              </span>
+          {features.map((feature) => {
+            const Icon = feature.icon;
 
-              <div className="feature-content">
-                <h3>{feature.title}</h3>
-                <p>{feature.description}</p>
+            return (
+              <article className="feature-item" key={feature.title}>
+                <span className="feature-icon">
+                  <Icon size={25} strokeWidth={1.8} />
+                </span>
 
-                <ul>
-                  {feature.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            </article>
-          ))}
+                <div className="feature-content">
+                  <h3>{feature.title}</h3>
+                  <p>{feature.description}</p>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 

@@ -221,3 +221,76 @@
     padding: 65px 20px 75px;
   }
 }
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--features-cyan);
+  background: #e6f7fa;
+  border-radius: 10px;
+}
+
+/* Features page back button */
+.botanico-features > .back-home-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 17px;
+  margin-top: 24px;
+  margin-left: max(24px, calc((100% - 1152px) / 2));
+  color: #334155;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.botanico-features > .back-home-btn:hover {
+  color: var(--features-cyan);
+  background: #f0fbfd;
+  border-color: var(--features-cyan);
+  transform: translateX(-3px);
+}
+
+.botanico-features > .back-home-btn:focus-visible {
+  outline: 3px solid rgba(8, 145, 178, 0.2);
+  outline-offset: 3px;
+}
+
+.features-hero {
+  padding-top: 45px;
+}
+
+@media (max-width: 600px) {
+  .botanico-features > .back-home-btn {
+    margin-top: 18px;
+    margin-left: 20px;
+  }
+
+  .features-hero {
+    padding-top: 35px;
+  }
+}
+
+.botanico-features > .back-home-btn {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  min-height: auto;
+  box-shadow: none;
+}
+
+.botanico-features > .back-home-btn:hover {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
