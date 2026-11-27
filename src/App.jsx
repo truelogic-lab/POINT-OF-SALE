@@ -1,5 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation
+} from 'react-router-dom';
+
 import AppHeader from './components/AppHeader';
 import LandingPage from './components/LandingPage';
 import Footer from './components/Footer';
@@ -17,40 +23,57 @@ import HelpPage from './pages/HelpPage';
 import ApiPage from './pages/ApiPage';
 import StatusPage from './pages/StatusPage';
 import TermsPage from './pages/TermsPage';
+import LoginPage from './pages/LoginPage';
+import DashboardPage from './pages/DashboardPage';
+import CashierDashboard from './pages/CashierDashboard';
 
-export default function App() {
+function AppContent() {
+  const location = useLocation();
+
+  const isLoginPage = location.pathname === '/login';
+  const isERPPage = ['/dashboard', '/cashier'].includes(location.pathname);
+
   return (
-    <Router>
+    <>
       <ScrollToTop />
-      <div className="app-shell">
-        <AppHeader />
+
+      <div className={`app-shell${isLoginPage ? ' login-shell' : ''}${isERPPage ? ' erp-shell' : ''}`}>
+        {!isLoginPage && !isERPPage && <AppHeader />}
+
         <main className="main-content">
           <Routes>
             <Route path="/" element={<LandingPage />} />
-            
-            {/* Product */}
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/cashier" element={<CashierDashboard />} />
+
             <Route path="/features" element={<FeaturesPage />} />
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/hardware" element={<HardwarePage />} />
             <Route path="/integrations" element={<IntegrationsPage />} />
-            
-            {/* Company */}
+
             <Route path="/about" element={<AboutPage />} />
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/contact" element={<ContactPage />} />
-            
-            {/* Support */}
+
             <Route path="/help" element={<HelpPage />} />
             <Route path="/api" element={<ApiPage />} />
             <Route path="/status" element={<StatusPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
-            
-            {/* Legal */}
             <Route path="/terms" element={<TermsPage />} />
           </Routes>
         </main>
-        <Footer />
+
+        {!isLoginPage && !isERPPage && <Footer />}
       </div>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }
